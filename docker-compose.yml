@@ -1,0 +1,21 @@
+version: "3.5"
+
+services:
+  dev-box01:
+    image: sporule/dev-box
+    container_name: dev-box01
+    ports:
+      - "10022:22"
+      - "10080:8080"
+    volumes:
+      - dev-box01:/root/
+    env_file:
+      - ./dev-box.env
+
+
+volumes:
+  dev-box01:
+
+networks:
+  default:
+    name: dev-boxes
