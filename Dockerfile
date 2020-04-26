@@ -25,7 +25,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
 	libxml2-dev libxslt1-dev zlib1g-dev \
     postgresql postgresql-contrib \
     mongodb-org \
-    neovim python3-neovim 
+    neovim python3-neovim \
+    git-all
 
 # Set up SSH
 COPY .ssh/ /root/.ssh/
