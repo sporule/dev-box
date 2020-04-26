@@ -23,8 +23,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     python3 python-dev python3-dev python-pip\
     build-essential libssl-dev libffi-dev \
 	libxml2-dev libxslt1-dev zlib1g-dev \
-    postgresql postgresql-contrib \
-    mongodb-org \
     neovim python3-neovim \
     git-all
 
