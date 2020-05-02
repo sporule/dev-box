@@ -4,6 +4,7 @@ services:
   dev-box01:
     image: sporule/dev-box
     container_name: dev-box01
+    restart: always 
     ports:
       - "10022:22"
       - "10080:8080"
