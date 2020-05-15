@@ -20,7 +20,7 @@ RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mo
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     nodejs \
     golang-go \
-    python3 python-dev python3-dev python-pip\
+    python3 python-dev python3-dev python-pip python3-venv\
     build-essential libssl-dev libffi-dev \
 	libxml2-dev libxslt1-dev zlib1g-dev \
     neovim python3-neovim \
