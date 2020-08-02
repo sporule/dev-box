@@ -6,28 +6,49 @@ services:
     container_name: dev-box01
     restart: always 
     ports:
-      - "10022:22"
-      - "10080:8080"
-      - "10000:8000"
+      - '10022:22'
+      - 10080:8080
+      - 10000:8000
     volumes:
       - dev-box01:/root/
     env_file:
       - ./dev-box.env
 
-  mongo-express:
-    image: mongo-express
+  # mongo:
+  #   image: mongo
+  #   container_name: mongo
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: name
+  #   volumes:
+  #     - mongodb01:/data/db
+
+  postgres:
+    image: postgres
+    container_name: postgres
     restart: always
     ports:
-      - 8081:8081
+      - 5432:5432
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      POSTGRES_PASSWORD: 1q2w3e4r
     volumes:
-      - mongodb01:/data/db
+      - postgresdb01:/var/lib/postgresql/data
+  
+  dbadmin:
+    image: adminer
+    container_name: dbadmin
+    restart: always
+    ports:
+      - 8080:8080
+      
 
 volumes:
   dev-box01:
   mongodb01:
+  postgresdb01:
 
 networks:
   default:
