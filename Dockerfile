@@ -26,9 +26,19 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     neovim python3-neovim \
     git-all
 
+# Set up Jupyter Hub
+
+RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
+    && apt-get install -y nodejs \
+	&& pip install jupyterhub notebook findspark\
+	&& npm install -g configurable-http-proxy \
+	&& yes | jupyterhub --generate-config \
+	&& echo "c.LocalProcessSpawner.shell_cmd = ['bash', '-l', '-c']" >> "/root/jupyterhub_config.py"
+
 # Set up SSH
 COPY .ssh/ /root/.ssh/
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 
 # Set up initial folder
 WORKDIR /root
