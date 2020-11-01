@@ -28,16 +28,16 @@ services:
 #     volumes:
 #       - mongodb01:/data/db
 
-  # postgres:
-  #   image: postgres
-  #   container_name: postgres
-  #   restart: always
-  #   ports:
-  #     - 5432:5432
-  #   environment:
-  #     POSTGRES_PASSWORD: 1q2w3e4r
-  #   volumes:
-  #     - postgresdb01:/var/lib/postgresql/data
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e4r
+    volumes:
+      - postgresdb01:/var/lib/postgresql/data
   
   dbadmin:
     image: dockette/adminer:full
