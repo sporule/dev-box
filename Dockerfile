@@ -1,6 +1,4 @@
-FROM ubuntu:18.04
-
-
+FROM ubuntu:20.10
 LABEL  maintainer = "Sporule <hao@sporule.com>"
 
 # Install Basic Tools
