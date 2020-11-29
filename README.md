@@ -9,3 +9,4 @@ Host DevNode
     User root
     Port 10022
     IdentityFile C:\Users\luoha\Documents\Projects\dev-box\private_key
+    UserKnownHostsFile C:\No-exist.txt
