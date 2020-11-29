@@ -5,14 +5,7 @@ LABEL  maintainer = "Sporule <hao@sporule.com>"
 
 RUN apt-get update && apt-get install -y ssh wget procps gnupg curl software-properties-common
 
-
-# Add Source
-
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN add-apt-repository ppa:longsleep/golang-backports
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
-RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-
 
 # Install Tools and Build Dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
