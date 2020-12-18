@@ -12,3 +12,8 @@ Host DevNode
     StrictHostKeyChecking no
     UserKnownHostsFile C:\No-exist.txt
 ```
+
+
+## Airflow
+
+Default User and password for Airflow is sporule

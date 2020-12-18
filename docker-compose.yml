@@ -8,31 +8,34 @@ services:
     ports:
       - '10022:22'
       - 10080:8080
+      - 8888:8080
     volumes:
-      - dev-box01:/root/
+      - dev-box01-root:/root/
+      - dev-box01-home:/home/
     environment:
-      - JUPYTER=1
+      - JUPYTER=0
+      - AIRFLOW=1
     env_file:
       - ./dev-box.env
 
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    volumes:
-      - mongodb01:/data/db
+  # mongo:
+  #   image: mongo
+  #   container_name: mongo
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
+  #   volumes:
+  #     - mongodb01:/data/db
 
-  mongo-express:
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  # mongo-express:
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
 
   # postgres:
   #   image: postgres
@@ -54,8 +57,9 @@ services:
       
 
 volumes:
-  dev-box01:
-  mongodb01:
+  dev-box01-root:
+  dev-box01-home:
+  # mongodb01:
 #   postgresdb01:
 
 networks:

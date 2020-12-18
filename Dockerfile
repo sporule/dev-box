@@ -27,6 +27,9 @@ COPY .ssh/ /root/.ssh/
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
     && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 
+# Set up Airflow
+RUN export AIRFLOW_HOME=/root/airflow \
+	&& pip install apache-airflow
 
 # Set up initial folder
 WORKDIR /root
