@@ -37,30 +37,30 @@ services:
   #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
   #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
 
-  # postgres:
-  #   image: postgres
-  #   container_name: postgres
-  #   restart: always
-  #   ports:
-  #     - 5432:5432
-  #   environment:
-  #     POSTGRES_PASSWORD: 1q2w3e4r
-  #   volumes:
-  #     - postgresdb01:/var/lib/postgresql/data
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e4r
+    volumes:
+      - postgresdb01:/var/lib/postgresql/data
   
-  # dbadmin:
-  #   image: dockette/adminer:full
-  #   container_name: dbadmin
-  #   restart: always
-  #   ports:
-  #     - 8080:80
+  dbadmin:
+    image: dockette/adminer:full
+    container_name: dbadmin
+    restart: always
+    ports:
+      - 8080:80
       
 
 volumes:
   dev-box01-root:
   dev-box01-home:
   # mongodb01:
-#   postgresdb01:
+  postgresdb01:
 
 networks:
   default:
