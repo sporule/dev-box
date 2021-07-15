@@ -3,7 +3,7 @@ LABEL  maintainer = "Sporule <hao@sporule.com>"
 
 # Install Basic Tools
 
-RUN apt-get update && apt-get install -y ssh wget procps gnupg curl software-properties-common \
+RUN apt-get update && apt-get install -y ssh sudo wget procps gnupg curl software-properties-common \
     && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     nodejs \
