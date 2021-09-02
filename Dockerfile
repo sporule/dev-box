@@ -1,9 +1,9 @@
-FROM ubuntu:20.10
+FROM ghcr.io/linuxserver/rdesktop:latest
 LABEL  maintainer = "Sporule <hao@sporule.com>"
 
 # Install Basic Tools
 
-RUN apt-get update && apt-get install -y ssh sudo wget procps gnupg curl software-properties-common \
+RUN apt-get update && apt-get install -y ssh sudo wget procps gnupg curl software-properties-common sudo \
     && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     nodejs \
@@ -27,9 +27,15 @@ COPY .ssh/ /root/.ssh/
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
     && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 
+
+
 # Set up Airflow
 RUN export AIRFLOW_HOME=/root/airflow \
 	&& pip install apache-airflow
+
+
+# Delete default user
+RUN deluser --remove-home abc
 
 # Set up initial folder
 WORKDIR /root
