@@ -9,6 +9,7 @@ function add_users(){
           echo "$name:$USERS_PASSWORD" | chpasswd
           echo "$name created"
         fi
+        cp -r /home/abc/* /home/$name/
         usermod -aG sudo $name
   done
 }

@@ -2,12 +2,12 @@ version: "3.5"
 
 services:
   dev-box01:
-    image: sporule/dev-box:arm64
+    image: sporule/dev-box:latest
     container_name: dev-box01
     restart: always 
     ports:
       - '10022:22'
-      - 6689:3389
+      - 6690:3389
     volumes:
       - dev-box01-root:/root/
       - dev-box01-home:/home/
@@ -16,6 +16,9 @@ services:
       - AIRFLOW=0
     env_file:
       - ./dev-box.env
+    cap_add:
+      - CAP_SYS_ADMIN
+    # privileged: true
 
   # dev-box02:
   #   image: ghcr.io/linuxserver/rdesktop
@@ -66,7 +69,7 @@ volumes:
   dev-box01-root:
   dev-box01-home:
   # mongodb01:
-  postgresdb01:
+  # postgresdb01:
 
 networks:
   default:
