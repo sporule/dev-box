@@ -45,6 +45,9 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
 # Delete default user
 RUN userdel abc
 
+# install font support
+RUN sudo apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
+
 # Set up initial folder
 WORKDIR /root
 

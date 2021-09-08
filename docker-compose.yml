@@ -7,8 +7,9 @@ services:
     restart: always 
     ports:
       - '10022:22'
-      - 6690:3389
+      - 6689:3389
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - dev-box01-root:/root/
       - dev-box01-home:/home/
     environment:
