@@ -1,1 +1,1 @@
-docker buildx build --platform linux/arm64  -t sporule/dev-box:latest .
+docker buildx build --platform linux/arm64  -t sporule/dev-box:arm64 .
