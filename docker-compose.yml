@@ -13,6 +13,9 @@ services:
       - dev-box01-home:/home/
     env_file:
       - ./dev-box.env
+    cap_add:
+      - CAP_SYS_ADMIN
+      
 
 volumes:
   dev-box01-root:
