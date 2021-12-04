@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   dev-box01:
-    image: sporule/dev-box:latest
+    image: sporule/dev-box:arm
     container_name: dev-box01
     restart: always 
     ports:
