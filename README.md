@@ -15,5 +15,3 @@ Host DevNode
 
 
 ## Airflow
-
-Default User and password for Airflow is sporule

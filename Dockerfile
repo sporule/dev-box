@@ -1,11 +1,19 @@
-FROM ubuntu:20.10
+FROM ubuntu:20.04
 LABEL  maintainer = "Sporule <hao@sporule.com>"
 
-# Install Basic Tools
 
-RUN apt-get update && apt-get install -y ssh wget procps gnupg curl software-properties-common \
-    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
+# Install basic tools like wget
+RUN apt-get update && apt-get install -y ssh wget procps gnupg curl software-properties-common
+
+
+# Add basic repos
+RUN  wget -O- https://apt.corretto.aws/corretto.key | apt-key add - \
+     && add-apt-repository 'deb https://apt.corretto.aws stable main' \
+     && curl -sL https://deb.nodesource.com/setup_14.x | bash -
+
+# Install Dependencies
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
+    java-1.8.0-amazon-corretto-jdk \
     nodejs \
     golang-go \
     python3 python-dev python3-dev python3-pip python3-venv\
@@ -13,14 +21,6 @@ RUN apt-get update && apt-get install -y ssh wget procps gnupg curl software-pro
 	libxml2-dev libxslt1-dev zlib1g-dev \
     neovim python3-neovim \
     git-all
-
-# Set up Jupyter Hub
-RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
-    && apt-get install -y nodejs \
-	&& pip install jupyterhub notebook findspark\
-	&& npm install -g configurable-http-proxy \
-	&& yes | jupyterhub --generate-config \
-	&& echo "c.LocalProcessSpawner.shell_cmd = ['bash', '-l', '-c']" >> "/root/jupyterhub_config.py"
 	
 # Set up SSH
 COPY .ssh/ /root/.ssh/

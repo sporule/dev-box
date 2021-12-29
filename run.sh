@@ -15,13 +15,6 @@ function add_users(){
 
 add_users &
 
-# Run Jupyter Hub if it is enabled
-if [ "$JUPYTER" = "1" ]; then (jupyterhub --port=8080 &) ; fi
-
-
-# # Run Airflow if it is enabled
-if [ "$AIRFLOW" = "1" ]; then airflow db init; sleep 10; airflow users create --role Admin --username sporule --email sporule --firstname sporule --lastname sporule --password sporule;rm /root/airflow/airflow-scheduler.pid /root/airflow/airflow-webserver-monitor.pid; (airflow webserver -p 8080 -D &) ;sleep 5;(airflow scheduler -D &); fi
-
 
 # Start SSH
 service ssh restart && bash
