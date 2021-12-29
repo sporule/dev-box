@@ -9,12 +9,15 @@ function add_users(){
           echo "$name:$USERS_PASSWORD" | chpasswd
           echo "$name created"
         fi
+        cp -r /home/abc/* /home/$name/
+        usermod -aG sudo $name
   done
 }
 
 
 add_users &
 
+/etc/init.d/xrdp start
 
 # Start SSH
 service ssh restart && bash

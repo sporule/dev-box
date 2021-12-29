@@ -1,7 +1,7 @@
 # Dev Boxes
 
 
-Example SSH Config file
+Example SSH Config file, private_key is the default ssh key to authenticate to the box with root account.
 
 ```
 Host DevNode
@@ -14,4 +14,6 @@ Host DevNode
 ```
 
 
-## Airflow
+# Dangerous
+
+Do not use this image in public network without replacing the SSH Key.

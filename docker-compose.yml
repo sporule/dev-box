@@ -2,62 +2,24 @@ version: "3.5"
 
 services:
   dev-box01:
-    image: sporule/dev-box
+    image: sporule/dev-box:latest
     container_name: dev-box01
     restart: always 
     ports:
       - '10022:22'
-      - 10080:8080
-      - 8888:8080
+      - 6689:3389
     volumes:
       - dev-box01-root:/root/
       - dev-box01-home:/home/
     env_file:
       - ./dev-box.env
-
-  # mongo:
-  #   image: mongo
-  #   container_name: mongo
-  #   restart: always
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: root
-  #     MONGO_INITDB_ROOT_PASSWORD: example
-  #   volumes:
-  #     - mongodb01:/data/db
-
-  # mongo-express:
-  #   image: mongo-express
-  #   restart: always
-  #   ports:
-  #     - 8081:8081
-  #   environment:
-  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
-
-  # postgres:
-  #   image: postgres
-  #   container_name: postgres
-  #   restart: always
-  #   ports:
-  #     - 5432:5432
-  #   environment:
-  #     POSTGRES_PASSWORD: 1q2w3e4r
-  #   volumes:
-  #     - postgresdb01:/var/lib/postgresql/data
-  
-  # dbadmin:
-  #   image: dockette/adminer:full
-  #   container_name: dbadmin
-  #   restart: always
-  #   ports:
-  #     - 8080:80
+    cap_add:
+      - CAP_SYS_ADMIN
       
 
 volumes:
   dev-box01-root:
   dev-box01-home:
-  # mongodb01:
-  # postgresdb01:
 
 networks:
   default:
