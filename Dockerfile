@@ -9,11 +9,13 @@ RUN apt-get update && apt-get install -y ssh wget procps gnupg curl software-pro
 # Add basic repos
 RUN  wget -O- https://apt.corretto.aws/corretto.key | apt-key add - \
      && add-apt-repository 'deb https://apt.corretto.aws stable main' \
+     && add-apt-repository ppa:cwchien/gradle -y\
      && curl -sL https://deb.nodesource.com/setup_14.x | bash -
+
 
 # Install Dependencies
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-    java-1.8.0-amazon-corretto-jdk \
+    java-1.8.0-amazon-corretto-jdk gradle \
     nodejs \
     golang-go \
     python3 python-dev python3-dev python3-pip python3-venv\
