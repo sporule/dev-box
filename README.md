@@ -17,3 +17,6 @@ Host DevNode
 # Dangerous
 
 Do not use this image in public network without replacing the SSH Key.
+
+
+Now it supports the individual users rather than root account.
