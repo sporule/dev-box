@@ -4,17 +4,18 @@ LABEL  maintainer = "Sporule <hao@sporule.com>"
 
 
 # Install basic tools like wget
-RUN ap update && ap install -y ssh wget procps gnupg curl software-properties-common sudo apt-transport-https
+RUN apt update && apt install -y ssh wget gpg procps gnupg curl software-properties-common sudo
 
 # Add repos
 RUN  wget -O- https://apt.corretto.aws/corretto.key | apt-key add - \
      && add-apt-repository 'deb https://apt.corretto.aws stable main' \
-     && add-apt-repository ppa:cwchien/gradle -y\
-     && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+     && add-apt-repository ppa:cwchien/gradle -y \
+     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
      && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
-     && sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg \
+     && sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg \
      && sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'\
      && rm -f packages.microsoft.gpg \
+     && apt install apt-transport-https
 
 # Install tools and dependencies
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -yq \
