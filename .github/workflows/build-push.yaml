@@ -30,4 +30,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: sporule/dev-box:latest
+          tags: sporule/dev-box:0.${{ github.run_id }} 

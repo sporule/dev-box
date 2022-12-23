@@ -5,20 +5,20 @@ services:
     image: sporule/dev-box:latest
     container_name: dev-box01
     restart: always 
+    privileged: true
     ports:
       - '10022:22'
       - 6689:3389
     volumes:
-      - dev-box01-root:/root/
+      - dev-box01-usr:/usr/
       - dev-box01-home:/home/
+      - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - ./dev-box.env
-    cap_add:
-      - CAP_SYS_ADMIN
       
 
 volumes:
-  dev-box01-root:
+  dev-box01-usr:
   dev-box01-home:
 
 networks:

@@ -6,14 +6,10 @@ Example SSH Config file
 ```
 Host DevNode
     HostName localhost
-    User root
+    User sporule
     Port 10022
-    IdentityFile C:\dev-box\private_key
-    StrictHostKeyChecking no
     UserKnownHostsFile C:\No-exist.txt
 ```
 
-
-## Airflow
-
-Default User and password for Airflow is sporule
+You will need to update username and password in dev-box.env
+It opens up VSCode tunnel at start up, you will need to authenticate to obtain permission
