@@ -1,4 +1,4 @@
-# Dev Boxes
+# Dev Box
 
 
 Example SSH Config file, private_key is the default ssh key to authenticate to the box with root account.
