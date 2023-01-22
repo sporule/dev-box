@@ -13,7 +13,6 @@ Host DevNode
 
 # Dangerous
 
-You will need to update username and password in dev-box.env
-VSCode tunnel is activated at start up, you will need to authenticate to obtain permission
-Do not use this image in public network without replacing the SSH Key.
-Now it supports the individual users rather than root account.
+You will need to update username and password in dev-box.env.
+VSCode tunnel is activated at start up, you will need to check the unique link from the logs to authenticate to obtain permission
+
