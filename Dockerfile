@@ -30,6 +30,9 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -yq \
     code \
     fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
 
+# Install Rust
+RUN  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
 
 # Clean Package Management Archive
 
